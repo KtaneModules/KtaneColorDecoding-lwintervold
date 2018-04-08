@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ColorDecoding
   title: Color Decoding
-  description: 
+  description: The colors, Simon; what do they mean!?
   version: 0.1
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: d4c84ef7e6d926d429f2f421d6cb4fba, type: 3}
