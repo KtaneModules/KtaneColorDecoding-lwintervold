@@ -10,9 +10,9 @@ public class ColorDecoding : MonoBehaviour {
 	public KMBombModule BombModule;
 	public KMAudio Audio;
 	public KMSelectable[] InputButtons;
-	public KMSelectable[] IndicatorGrid;
-	public KMSelectable[] DisplayGrid;
-	public KMSelectable[] StageIndicators;
+	public GameObject[] IndicatorGrid;
+	public GameObject[] DisplayGrid;
+	public GameObject[] StageIndicators;
 
 	private static readonly Dictionary<string, Color32> _colormap= new Dictionary<string, Color32> { 
 		{"R", new Color32(0xFF, 0x00, 0x00, 0xFF)},
