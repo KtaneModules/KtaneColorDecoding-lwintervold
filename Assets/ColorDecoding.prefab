@@ -3794,7 +3794,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3954,7 +3954,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4114,7 +4114,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4242,7 +4242,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4338,7 +4338,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5138,7 +5138,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5330,7 +5330,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5362,7 +5362,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5938,7 +5938,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6034,7 +6034,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6578,7 +6578,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6770,7 +6770,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 58ef1257ede2efe4f99fea343f4457cf, type: 2}
+  - {fileID: 2100000, guid: a9b47b59930c0a548980bb9891a26664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7874,7 +7874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114051608277445110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8441,7 +8441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114313228523627880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8820,7 +8820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114413461711924940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8899,7 +8899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114458674244542484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8946,7 +8946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114475927351738976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9141,7 +9141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114543408541209900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9293,7 +9293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114575457514277674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9365,7 +9365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114637465186736060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9502,7 +9502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114680088897690988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10028,7 +10028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114845445295303706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10246,7 +10246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - GUI/KT 3D Text
+  - GUI/KT 3D Text Diffuse
 --- !u!114 &114990594067766652
 MonoBehaviour:
   m_ObjectHideFlags: 1
