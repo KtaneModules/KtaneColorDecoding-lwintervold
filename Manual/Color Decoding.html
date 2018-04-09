@@ -35,6 +35,8 @@
         .constraint-table {
             display: inline-block;
             border: none;
+            border-left: 0px;
+            font-size: 11.5pt;
         }
     </style>
 </head>
@@ -55,8 +57,8 @@
             </p>
 			<ul>
 				<li>From the pattern of the indicator and the state of the bomb, determine the row in the next table to use for the stage.</li>
-        <li>For the Venn line patterns section, consider the colors present in the indicator. For every color that is present in both the indicator and the table row for the stage, obtain the line pattern above that color in the column. Use that pattern or patterns in the Venn diagram on the following page to determine the correct constraint table number.</li>
-        <li>Go to that constraint table. For each constraint in that table from top to bottom, select the row or column which satisfies that constraint from the 6×6 grid. Skip the constraint labels described in the skip section, based on the current stage.</li>
+        <li>For the Venn line patterns section, consider the colors present in the indicator. For every color that is present in both the indicator and the table row for the stage, obtain the line pattern above that color in the column. Use that pattern or patterns in the Venn diagram on the following page to determine the correct constraint set number.</li>
+        <li>Go to that constraint set. For each constraint in that set from top to bottom, select the row or column which satisfies that constraint from the 6×6 grid. Skip the constraint labels described in the skip section, based on the current stage.</li>
         <li>When you have completed all three stages, the module will be disarmed.</li>
 			</ul>
 
@@ -439,108 +441,31 @@
          id="tspan11002" /></text>
   </g>
 </svg>
-            <div class="page-footer relative-footer">Page 2 of 3</div>
-        </div>
-    </div>
-    <div class="page page-bg-03">
-        <div class="page-header">
-            <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
-            <span class="page-header-section-title">Color Decoding</span>
-        </div>
-        <div class="page-content">
-            <u>Note:</u> Sequence constraints are reversible; e.g. BRR and RRB are equivalent on the display.<br>
+      <u>Note:</u> Sequence constraints are reversible; e.g. BRR and RRB are equivalent on the display.<br>
 
-            <b>Constraint Table 1</b>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Constraint Table 2</b>
             </table>
                 <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>BGB in sequence.</td>
-                    <tr><td>B</td><td>BBY in sequence.</td>
-                    <tr><td>C</td><td>R is not present.</td>
-                    <tr><td>D</td><td>YPG in sequence.</td>
-                    <tr><td>E</td><td>YGB in sequence.</td>
+                    <tr><th></th><th colspan="6">Constraint Sets 1-4</th></tr>
+                    <tr><th>Label</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Set 4</th>
+                    <tr><td>A</td><td>BGB in sequence.</td><td>PYP in sequence.</td><td>BPY in sequence.</td><td>GGB in sequence.</td>
+                    <tr><td>B</td><td>BBY in sequence.</td><td>G is not present.</td><td>PPB in sequence.</td><td>YRG in sequence.</td>
+                    <tr><td>C</td><td>R is not present.</td><td>YYR in sequence.</td><td>PRP in sequence.</td><td>P is not present.</td>
+                    <tr><td>D</td><td>YPG in sequence.</td><td>RPY in sequence</td><td>G is not present.</td><td>BYB in sequence.</td>
+                    <tr><td>E</td><td>YGB in sequence.</td><td>BPR in sequence.</td><td>RBR in sequence.</td><td>RGB in sequence.</td>
+
             </table>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>PYP in sequence.</td>
-                    <tr><td>B</td><td>G is not present.</td>
-                    <tr><td>C</td><td>YYR in sequence.</td>
-                    <tr><td>D</td><td>RPY in sequence</td>
-                    <tr><td>E</td><td>BPR in sequence.</td>
-            </table><br><br><b>Constraint Table 3</b>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Constraint Table 4</b>
             </table>
                 <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>BPY in sequence.</td>
-                    <tr><td>B</td><td>PPB in sequence.</td>
-                    <tr><td>C</td><td>PRP in sequence.</td>
-                    <tr><td>D</td><td>G is not present.</td>
-                    <tr><td>E</td><td>RBR in sequence.</td>
+                    <tr><th></th><th colspan="6">Constraint Sets 5-8</th></tr>
+                    <tr><th>Label</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Set 4</th>
+                    <tr><td>A</td><td>GGY in sequence.</td><td>PGG in sequence.</td><td>BBG in sequence.</td><td>PGB in sequence.</td>
+                    <tr><td>B</td><td>RGG in sequence.</td><td>YRR in sequence.</td><td>BYG in sequence.</td><td>Y is not present.</td>
+                    <tr><td>C</td><td>YRP in sequence.</td><td>B is not present.</td><td>PYY in sequence.</td><td>PPG in sequence.</td>
+                    <tr><td>D</td><td>PRR in sequence.</td><td>YYG in sequence.</td><td>R is not present.</td><td>BRG in sequence.</td>
+                    <tr><td>E</td><td>B is not present.</td><td>YGR in sequence.</td><td>YBG in sequence.</td><td>RGR in sequence.</td>
+
             </table>
-            
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>GGB in sequence.</td>
-                    <tr><td>B</td><td>YRG in sequence.</td>
-                    <tr><td>C</td><td>P is not present.</td>
-                    <tr><td>D</td><td>BYB in sequence.</td>
-                    <tr><td>E</td><td>RGB in sequence.</td>
-            </table><br><br><b>Constraint Table 5</b>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Constraint Table 6</b>
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>GGY in sequence.</td>
-                    <tr><td>B</td><td>RGG in sequence.</td>
-                    <tr><td>C</td><td>YRP in sequence.</td>
-                    <tr><td>D</td><td>PRR in sequence.</td>
-                    <tr><td>E</td><td>B is not present.</td>
-            </table>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>PGG in sequence.</td>
-                    <tr><td>B</td><td>YRR in sequence.</td>
-                    <tr><td>C</td><td>B is not present.</td>
-                    <tr><td>D</td><td>YYG in sequence.</td>
-                    <tr><td>E</td><td>YGR in sequence.</td>
-            </table><br><br><b>Constraint Table 7</b>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Constraint Table 8</b>
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>BBG in sequence.</td>
-                    <tr><td>B</td><td>BYG in sequence.</td>
-                    <tr><td>C</td><td>PYY in sequence.</td>
-                    <tr><td>D</td><td>R is not present.</td>
-                    <tr><td>E</td><td>YBG in sequence.</td>
-            </table>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </table>
-                <table class='constraint-table'>
-                    <tr><th>Label</th><th>Constraint</th>
-                    <tr><td>A</td><td>PGB in sequence.</td>
-                    <tr><td>B</td><td>Y is not present.</td>
-                    <tr><td>C</td><td>PPG in sequence.</td>
-                    <tr><td>D</td><td>BRG in sequence.</td>
-                    <tr><td>E</td><td>RGR in sequence.</td>
-            </table>
-            <div class="page-footer relative-footer">Page 3 of 3</div>
+            <div class="page-footer relative-footer">Page 2 of 3</div>
         </div>
     </div>
 </div>
