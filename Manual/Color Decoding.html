@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Keep Talking and Nobody Explodes Example Manual Page</title>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Color Decoding — Keep Talking and Nobody Explodes Module</title>
     <meta name="viewport" content="initial-scale=1"> 
 	<link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -20,22 +21,9 @@
             padding: 0px;
         }
 
-        .constraint-tables {
-            display: grid;
-            grid-template-rows: repeat(4, 1fr);
-            grid-template-columns: 1fr 1fr;
-            grid-row-gap: 20px;
-        }
-
-        .constraint-tables div {
-            display: flex;
-            flex-direction: column;
-        }
-
         .constraint-table {
             display: inline-block;
             border: none;
-            border-left: 0px;
             font-size: 11.5pt;
         }
     </style>
@@ -50,401 +38,395 @@
         <div class="page-content">
     	    <img src="img/Component.svg" class="diagram">
             <h2>On the Subject of Color Decoding</h2>
-            <p class="flavour-text">
-					The colors, Simon; what do they mean!?
-			</p>
-			<p>This module is comprised of three stages, where each stage contains a 4×4 indicator grid above a 6×6 display grid. Each grid is comprised of five colors: Red, Green, Blue, Yellow, and Purple. In each stage you must select a number of rows and/or columns from the 6×6 grid. You can select a row or column by pressing the arrow button at the end of that row or column. The selections you must make can be determined as follows:
-            </p>
+            <p class="flavour-text">The colors, Simon; what do they mean!?</p>
+			<p>This module is comprised of three stages, where each stage contains a 4×4 indicator grid above a 6×6 display grid. Each grid is comprised of five colors: Red, Green, Blue, Yellow, and Purple. In each stage you must select a number of rows and/or columns from the 6×6 grid. You can select a row or column by pressing the arrow button at the end of that row or column. The selections you must make can be determined as follows:</p>
 			<ul>
 				<li>From the pattern of the indicator and the state of the bomb, determine the row in the next table to use for the stage.</li>
-        <li>For the Venn line patterns section, consider the colors present in the indicator. For every color that is present in both the indicator and the table row for the stage, obtain the line pattern above that color in the column. Use that pattern or patterns in the Venn diagram on the following page to determine the correct constraint set number.</li>
-        <li>Go to that constraint set. For each constraint in that set from top to bottom, select the row or column which satisfies that constraint from the 6×6 grid. Skip the constraint labels described in the skip section, based on the current stage.</li>
-        <li>When you have completed all three stages, the module will be disarmed.</li>
+                <li>For the Venn line patterns section, consider the colors present in the indicator. For every color that is present in both the indicator and the table row for the stage, obtain the line pattern above that color in the column. Use that pattern or patterns in the Venn diagram on the following page to determine the correct constraint set number.</li>
+                <li>Go to that constraint set. For each constraint in that set from top to bottom, select the row or column which satisfies that constraint from the 6×6 grid. Skip the constraint labels described in the skip section, based on the current stage.</li>
+                <li>When you have completed all three stages, the module will be disarmed.</li>
 			</ul>
-
 			<table>
-                <tr>
-                	<th rowspan="2" width='100'>Indicator Pattern</th>
-                	<th rowspan="2" width='145'>Bomb/Module State</th>
-                    <th colspan="4">Venn Line Patterns</th>
-                    <th colspan="3">Skip Section</th>
-                </tr>
-                </td>
-                <td class="table-img-cell"><img src="img/rounded.svg" class="table-img"></td>
-                <td class="table-img-cell"><img src="img/longshort.svg" class="table-img2"></td>
-                <td class="table-img-cell"><img src="img/solid.svg" class="table-img2"></td>
-                <td class="table-img-cell"><img src="img/square.svg" class="table-img2"></td>
-                <td width="60">Stage 1</td><td width="60">Stage 2</td><td width="60">Stage 3</td></tr>
-                <tr>
-                    <td rowspan="2">Checkered</td>
-                    <td>≤2 Batteries</td>
-                    <td>R</td>
-                    <td>G</td>
-                    <td>B</td>
-                    <td>Y</td>
-                    <td>A, C</td>
-                    <td>B</td>
-                    <td>B, E</td>
-                </tr>
-                <tr>
-                	<td>>2 Batteries</td>
-                	<td>P</td>
-                    <td>B</td>
-                    <td>Y</td>
-                    <td>R</td>
-                    <td>B, D</td>
-                    <td>D</td>
-                    <td>C, E</td>
-                </tr>
-                <tr>
-                    <td rowspan="2">Vertical</td>
-                    <td>≤2 Ports</td>
-                    <td>G</td>
-                    <td>R</td>
-                    <td>P</td>
-                    <td>Y</td>
-                    <td>C</td>
-                    <td>A, D</td>
-                    <td>A, B</td>
-                </tr>
-                <tr>
-                	<td>>2 Ports</td>
-                	<td>B</td>
-                    <td>Y</td>
-                    <td>G</td>
-                    <td>P</td>
-                    <td>A, E</td>
-                    <td>B, D</td>
-                    <td>A, D</td>
-                </tr>
-                <tr>
-                    <td rowspan="2">Horizontal</td>
-                    <td>≤2 Lit Indicators</td>
-                    <td>Y</td>
-                    <td>P</td>
-                    <td>R</td>
-                    <td>B</td>
-                    <td>D</td>
-                    <td>A, C</td>
-                    <td>B, E</td>
-                </tr>
-                <tr>
-                	<td>>2 Lit Indicators</td>
-                	<td>G</td>
-                    <td>B</td>
-                    <td>P</td>
-                    <td>R</td>
-                    <td>C, E</td>
-                    <td>A</td>
-                    <td>C, D</td>
-                </tr>
-                <tr>
-                    <td rowspan="2">Solid</td>
-                    <td>Stage 1 or 3</td>
-                    <td>P</td>
-                    <td>G</td>
-                    <td>B</td>
-                    <td>R</td>
-                    <td>A, E</td>
-                    <td>B, D</td>
-                    <td>C</td>
-                </tr>
-                <tr>
-                	<td>Otherwise</td>
-                	<td>Y</td>
-                    <td>R</td>
-                    <td>G</td>
-                    <td>P</td>
-                    <td>E</td>
-                    <td>A, D</td>
-                    <td>B, C</td>
-                </tr>
+          <tr>
+            	<th rowspan="2" width='100'>Indicator Pattern</th>
+            	<th rowspan="2" width='145'>Bomb/Module State</th>
+              <th colspan="4">Venn Line Patterns</th>
+              <th colspan="3">Skip Section</th>
+          </tr>
+          <tr>
+              <td class="table-img-cell"><img src="img/rounded.svg" class="table-img"></td>
+              <td class="table-img-cell"><img src="img/longshort.svg" class="table-img2"></td>
+              <td class="table-img-cell"><img src="img/solid.svg" class="table-img2"></td>
+              <td class="table-img-cell"><img src="img/square.svg" class="table-img2"></td>
+              <td width="60">Stage 1</td><td width="60">Stage 2</td><td width="60">Stage 3</td></tr>
+          </tr>
+          <tr>
+              <td rowspan="2">Checkered</td>
+              <td>≤2 Batteries</td>
+              <td>R</td>
+              <td>G</td>
+              <td>B</td>
+              <td>Y</td>
+              <td>A, C</td>
+              <td>B</td>
+              <td>B, E</td>
+          </tr>
+          <tr>
+          	<td>>2 Batteries</td>
+          	<td>P</td>
+              <td>B</td>
+              <td>Y</td>
+              <td>R</td>
+              <td>B, D</td>
+              <td>D</td>
+              <td>C, E</td>
+          </tr>
+          <tr>
+              <td rowspan="2">Vertical</td>
+              <td>≤2 Ports</td>
+              <td>G</td>
+              <td>R</td>
+              <td>P</td>
+              <td>Y</td>
+              <td>C</td>
+              <td>A, D</td>
+              <td>A, B</td>
+          </tr>
+          <tr>
+          	<td>>2 Ports</td>
+          	<td>B</td>
+              <td>Y</td>
+              <td>G</td>
+              <td>P</td>
+              <td>A, E</td>
+              <td>B, D</td>
+              <td>A, D</td>
+          </tr>
+          <tr>
+              <td rowspan="2">Horizontal</td>
+              <td>≤2 Lit Indicators</td>
+              <td>Y</td>
+              <td>P</td>
+              <td>R</td>
+              <td>B</td>
+              <td>D</td>
+              <td>A, C</td>
+              <td>B, E</td>
+          </tr>
+          <tr>
+          	<td>>2 Lit Indicators</td>
+          	<td>G</td>
+              <td>B</td>
+              <td>P</td>
+              <td>R</td>
+              <td>C, E</td>
+              <td>A</td>
+              <td>C, D</td>
+          </tr>
+          <tr>
+              <td rowspan="2">Solid</td>
+              <td>Stage 1 or 3</td>
+              <td>P</td>
+              <td>G</td>
+              <td>B</td>
+              <td>R</td>
+              <td>A, E</td>
+              <td>B, D</td>
+              <td>C</td>
+          </tr>
+          <tr>
+          	<td>Otherwise</td>
+          	<td>Y</td>
+              <td>R</td>
+              <td>G</td>
+              <td>P</td>
+              <td>E</td>
+              <td>A, D</td>
+              <td>B, C</td>
+          </tr>
             </table>
         </div>
-        <div class="page-footer relative-footer">Page 1 of 3</div>
+        <div class="page-footer relative-footer">Page 1 of 2</div>
 	</div>
     <div class="page page-bg-02">
-          <div class="page-header">
-              <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
-               <span class="page-header-section-title">Color Decoding</span>
+        <div class="page-header">
+            <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+            <span class="page-header-section-title">Color Decoding</span>
         </div>
         <div class="page-content">
             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg 
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 200 125"
-   version="1.1"
-   id="svg8"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="venn.svg">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="82.892629"
-     inkscape:cy="91.695717"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="5"
-     inkscape:window-maximized="1"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0" />
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-0.34523574,-0.13803499)">
-    <ellipse
-       style="fill:none;stroke:#000000;stroke-width:2.10889769;stroke-miterlimit:4;stroke-dasharray:2.10889771, 2.10889771;stroke-dashoffset:0;stroke-opacity:1"
-       id="path3699"
-       cx="43.185371"
-       cy="139.06422"
-       rx="68.276138"
-       ry="28.508369"
-       transform="matrix(0.7058088,-0.70840239,0.7058088,0.70840239,0,0)" />
-    <ellipse
-       transform="matrix(-0.7058088,-0.70840239,-0.7058088,0.70840239,0,0)"
-       ry="28.508369"
-       rx="68.276138"
-       cy="10.440063"
-       cx="-85.933693"
-       id="ellipse4506"
-       style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.40900468, 4.22701403;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
-    <ellipse
-       style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-miterlimit:4;stroke-dasharray:2.81800936, 1.40900468, 0.70450234, 1.40900468;stroke-dashoffset:0;stroke-opacity:1"
-       id="ellipse4508"
-       cx="-90.93145"
-       cy="-15.732096"
-       rx="68.276138"
-       ry="28.508369"
-       transform="matrix(-0.7058088,-0.70840239,-0.7058088,0.70840239,0,0)" />
-    <ellipse
-       transform="matrix(0.7058088,-0.70840239,0.7058088,0.70840239,0,0)"
-       ry="28.508369"
-       rx="68.276138"
-       cy="112.89207"
-       cx="37.692719"
-       id="ellipse4510"
-       style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="60.476189"
-       y="99.318459"
-       id="text842"><tspan
-         sodipodi:role="line"
-         id="tspan840"
-         x="60.476189"
-         y="99.318459"
-         style="stroke-width:0.26458332">2</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="86.556541"
-       y="49.047623"
-       id="text846"><tspan
-         sodipodi:role="line"
-         id="tspan844"
-         x="86.556541"
-         y="49.047623"
-         style="stroke-width:0.26458332">4</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="70.303574"
-       y="74.749992"
-       id="text850"><tspan
-         sodipodi:role="line"
-         id="tspan848"
-         x="70.303574"
-         y="74.749992"
-         style="stroke-width:0.26458332">5</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="114.14883"
-       y="95.916664"
-       id="text854"><tspan
-         sodipodi:role="line"
-         id="tspan852"
-         x="114.14883"
-         y="95.916664"
-         style="stroke-width:0.26458332">6</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="87.312508"
-       y="91.380959"
-       id="text858"><tspan
-         sodipodi:role="line"
-         id="tspan856"
-         x="87.312508"
-         y="91.380959"
-         style="stroke-width:0.26458332">7</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="105.07738"
-       y="73.238106"
-       id="text862"><tspan
-         sodipodi:role="line"
-         id="tspan860"
-         x="105.07738"
-         y="73.238106"
-         style="stroke-width:0.26458332">8</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="127.37797"
-       y="52.071419"
-       id="text866"><tspan
-         sodipodi:role="line"
-         id="tspan864"
-         x="127.37797"
-         y="52.071419"
-         style="stroke-width:0.26458332">1</tspan></text>
-    <text
-       id="text870"
-       y="115.94939"
-       x="88.068451"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="115.94939"
-         x="88.068451"
-         id="tspan868"
-         sodipodi:role="line">3</tspan></text>
-    <text
-       id="text874"
-       y="102.1338"
-       x="78.695084"
-       style="font-style:normal;font-weight:normal;font-size:7.9375px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1984375"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.1984375"
-         y="102.1338"
-         x="78.695084"
-         id="tspan872"
-         sodipodi:role="line">4</tspan></text>
-    <text
-       id="text878"
-       y="57.363106"
-       x="155.34824"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="57.363106"
-         x="155.34824"
-         id="tspan876"
-         sodipodi:role="line">7</tspan></text>
-    <text
-       id="text882"
-       y="24.85714"
-       x="58.208328"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="24.85714"
-         x="58.208328"
-         id="tspan880"
-         sodipodi:role="line">2</tspan></text>
-    <text
-       id="text886"
-       y="49.803566"
-       x="46.491089"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="49.803566"
-         x="46.491089"
-         id="tspan884"
-         sodipodi:role="line">6</tspan></text>
-    <text
-       id="text890"
-       y="66.434532"
-       x="24.190472"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="66.434532"
-         x="24.190472"
-         id="tspan888"
-         sodipodi:role="line">8</tspan></text>
-    <text
-       id="text894"
-       y="24.101181"
-       x="117.55059"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="24.101181"
-         x="117.55059"
-         id="tspan892"
-         sodipodi:role="line">5</tspan></text>
-    <text
-       id="text898"
-       y="102.13509"
-       x="98.368591"
-       style="font-style:normal;font-weight:normal;font-size:7.93749952px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19843748"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.19843748"
-         y="102.13509"
-         x="98.368591"
-         id="tspan896"
-         sodipodi:role="line">1</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="87.629021"
-       y="14.755614"
-       id="text11000"><tspan
-         sodipodi:role="line"
-         id="tspan10998"
-         x="87.629021"
-         y="14.755614"
-         style="stroke-width:0.26458332">3</tspan><tspan
-         sodipodi:role="line"
-         x="87.629021"
-         y="27.984781"
-         style="stroke-width:0.26458332"
-         id="tspan11002" /></text>
-  </g>
-</svg>
-      <u>Note:</u> Sequence constraints are reversible; e.g. BRR and RRB are equivalent on the display.<br>
-
-            </table>
-                <table class='constraint-table'>
+            <!-- Created with Inkscape (http://www.inkscape.org/) -->
+            <svg 
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:cc="http://creativecommons.org/ns#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                viewBox="0 0 200 125"
+                version="1.1"
+                id="svg8"
+                inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+                sodipodi:docname="venn.svg">
+                <defs
+                    id="defs2"/>
+                <sodipodi:namedview
+                    id="base"
+                    pagecolor="#ffffff"
+                    bordercolor="#666666"
+                    borderopacity="1.0"
+                    inkscape:pageopacity="0.0"
+                    inkscape:pageshadow="2"
+                    inkscape:zoom="7.919596"
+                    inkscape:cx="82.892629"
+                    inkscape:cy="91.695717"
+                    inkscape:document-units="mm"
+                    inkscape:current-layer="layer1"
+                    showgrid="false"
+                    inkscape:window-width="1920"
+                    inkscape:window-height="1017"
+                    inkscape:window-x="-8"
+                    inkscape:window-y="5"
+                    inkscape:window-maximized="1"
+                    fit-margin-top="0"
+                    fit-margin-left="0"
+                    fit-margin-right="0"
+                    fit-margin-bottom="0"/>
+                <metadata
+                    id="metadata5">
+                    <rdf:RDF>
+                      <cc:Work
+                         rdf:about="">
+                        <dc:format>image/svg+xml</dc:format>
+                        <dc:type
+                           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                        <dc:title />
+                      </cc:Work>
+                    </rdf:RDF>
+                  </metadata>
+                <g
+                    inkscape:label="Layer 1"
+                    inkscape:groupmode="layer"
+                    id="layer1"
+                    transform="translate(-0.34523574,-0.13803499)">
+                <ellipse
+                    style="fill:none;stroke:#000000;stroke-width:2.10889769;stroke-miterlimit:4;stroke-dasharray:2.10889771, 2.10889771;stroke-dashoffset:0;stroke-opacity:1"
+                    id="path3699"
+                    cx="43.185371"
+                    cy="139.06422"
+                    rx="68.276138"
+                    ry="28.508369"
+                    transform="matrix(0.7058088,-0.70840239,0.7058088,0.70840239,0,0)" />
+                <ellipse
+                    transform="matrix(-0.7058088,-0.70840239,-0.7058088,0.70840239,0,0)"
+                    ry="28.508369"
+                    rx="68.276138"
+                    cy="10.440063"
+                    cx="-85.933693"
+                    id="ellipse4506"
+                    style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.40900468, 4.22701403;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+                <ellipse
+                    style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-miterlimit:4;stroke-dasharray:2.81800936, 1.40900468, 0.70450234, 1.40900468;stroke-dashoffset:0;stroke-opacity:1"
+                    id="ellipse4508"
+                    cx="-90.93145"
+                    cy="-15.732096"
+                    rx="68.276138"
+                    ry="28.508369"
+                    transform="matrix(-0.7058088,-0.70840239,-0.7058088,0.70840239,0,0)" />
+                <ellipse
+                    transform="matrix(0.7058088,-0.70840239,0.7058088,0.70840239,0,0)"
+                    ry="28.508369"
+                    rx="68.276138"
+                    cy="112.89207"
+                    cx="37.692719"
+                    id="ellipse4510"
+                    style="fill:none;stroke:#000000;stroke-width:1.40900469;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="60.476189"
+                    y="99.318459"
+                    id="text842"><tspan
+                    sodipodi:role="line"
+                    id="tspan840"
+                    x="60.476189"
+                    y="99.318459"
+                    style="stroke-width:0.26458332">2</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="86.556541"
+                    y="49.047623"
+                    id="text846"><tspan
+                    sodipodi:role="line"
+                    id="tspan844"
+                    x="86.556541"
+                    y="49.047623"
+                    style="stroke-width:0.26458332">4</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="70.303574"
+                    y="74.749992"
+                    id="text850"><tspan
+                    sodipodi:role="line"
+                    id="tspan848"
+                    x="70.303574"
+                    y="74.749992"
+                    style="stroke-width:0.26458332">5</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="114.14883"
+                    y="95.916664"
+                    id="text854"><tspan
+                    sodipodi:role="line"
+                    id="tspan852"
+                    x="114.14883"
+                    y="95.916664"
+                    style="stroke-width:0.26458332">6</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="87.312508"
+                    y="91.380959"
+                    id="text858"><tspan
+                    sodipodi:role="line"
+                    id="tspan856"
+                    x="87.312508"
+                    y="91.380959"
+                    style="stroke-width:0.26458332">7</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="105.07738"
+                    y="73.238106"
+                    id="text862"><tspan
+                    sodipodi:role="line"
+                    id="tspan860"
+                    x="105.07738"
+                    y="73.238106"
+                    style="stroke-width:0.26458332">8</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="127.37797"
+                    y="52.071419"
+                    id="text866"><tspan
+                    sodipodi:role="line"
+                    id="tspan864"
+                    x="127.37797"
+                    y="52.071419"
+                    style="stroke-width:0.26458332">1</tspan></text>
+                <text
+                    id="text870"
+                    y="115.94939"
+                    x="88.068451"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                   xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="115.94939"
+                    x="88.068451"
+                    id="tspan868"
+                    sodipodi:role="line">3</tspan></text>
+                <text
+                    id="text874"
+                    y="102.1338"
+                    x="78.695084"
+                    style="font-style:normal;font-weight:normal;font-size:7.9375px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1984375"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.1984375"
+                    y="102.1338"
+                    x="78.695084"
+                    id="tspan872"
+                    sodipodi:role="line">4</tspan></text>
+                <text
+                    id="text878"
+                    y="57.363106"
+                    x="155.34824"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="57.363106"
+                    x="155.34824"
+                    id="tspan876"
+                    sodipodi:role="line">7</tspan></text>
+                <text
+                    id="text882"
+                    y="24.85714"
+                    x="58.208328"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="24.85714"
+                    x="58.208328"
+                    id="tspan880"
+                    sodipodi:role="line">2</tspan></text>
+                <text
+                    id="text886"
+                    y="49.803566"
+                    x="46.491089"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="49.803566"
+                    x="46.491089"
+                    id="tspan884"
+                    sodipodi:role="line">6</tspan></text>
+                <text
+                    id="text890"
+                    y="66.434532"
+                    x="24.190472"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="66.434532"
+                    x="24.190472"
+                    id="tspan888"
+                    sodipodi:role="line">8</tspan></text>
+                <text
+                    id="text894"
+                    y="24.101181"
+                    x="117.55059"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.26458332"
+                    y="24.101181"
+                    x="117.55059"
+                    id="tspan892"
+                    sodipodi:role="line">5</tspan></text>
+                <text
+                    id="text898"
+                    y="102.13509"
+                    x="98.368591"
+                    style="font-style:normal;font-weight:normal;font-size:7.93749952px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.19843748"
+                    xml:space="preserve"><tspan
+                    style="stroke-width:0.19843748"
+                    y="102.13509"
+                    x="98.368591"
+                    id="tspan896"
+                    sodipodi:role="line">1</tspan></text>
+                <text
+                    xml:space="preserve"
+                    style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+                    x="87.629021"
+                    y="14.755614"
+                    id="text11000"><tspan
+                    sodipodi:role="line"
+                    id="tspan10998"
+                    x="87.629021"
+                    y="14.755614"
+                    style="stroke-width:0.26458332">3</tspan><tspan
+                    sodipodi:role="line"
+                    x="87.629021"
+                    y="27.984781"
+                    style="stroke-width:0.26458332"
+                    id="tspan11002" /></text>
+                </g>
+            </svg>
+            <u>Note:</u> Sequence constraints are reversible; e.g. BRR and RRB are equivalent on the display.<br>
+            <table class='constraint-table'>
                     <tr><th></th><th colspan="6">Constraint Sets 1-4</th></tr>
                     <tr><th>Label</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Set 4</th>
                     <tr><td>A</td><td>BGB in sequence.</td><td>PYP in sequence.</td><td>BPY in sequence.</td><td>GGB in sequence.</td>
@@ -452,7 +434,6 @@
                     <tr><td>C</td><td>R is not present.</td><td>YYR in sequence.</td><td>PRP in sequence.</td><td>P is not present.</td>
                     <tr><td>D</td><td>YPG in sequence.</td><td>RPY in sequence</td><td>G is not present.</td><td>BYB in sequence.</td>
                     <tr><td>E</td><td>YGB in sequence.</td><td>BPR in sequence.</td><td>RBR in sequence.</td><td>RGB in sequence.</td>
-
             </table>
             </table>
                 <table class='constraint-table'>
@@ -463,10 +444,10 @@
                     <tr><td>C</td><td>YRP in sequence.</td><td>B is not present.</td><td>PYY in sequence.</td><td>PPG in sequence.</td>
                     <tr><td>D</td><td>PRR in sequence.</td><td>YYG in sequence.</td><td>R is not present.</td><td>BRG in sequence.</td>
                     <tr><td>E</td><td>B is not present.</td><td>YGR in sequence.</td><td>YBG in sequence.</td><td>RGR in sequence.</td>
-
             </table>
-            <div class="page-footer relative-footer">Page 2 of 3</div>
+            <div class="page-footer relative-footer">Page 2 of 2</div>
         </div>
     </div>
 </div>
-</body></html>
+</body>
+</html>
