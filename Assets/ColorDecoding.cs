@@ -198,9 +198,6 @@ public class ColorDecoding : MonoBehaviour {
 			if (c.GetType() == typeof(Sequence_Exact_Constraint))
 				constraints_in_build_order.Add (c);
 		}
-		foreach (Constraint c in constraints_in_build_order) {
-			Debug.LogFormat ("Constraint BuildOrder: {0}", c.getPattern ());
-		}
 		display = new Display (constraints_in_build_order);
 		display.generateRandomValidBoard ();
 	}
