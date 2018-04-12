@@ -27,57 +27,65 @@ public class ColorDecoding : MonoBehaviour {
 			new Sequence_Exact_Constraint ("BBY"),
 			new None_Constraint ("R"),
 			new Sequence_Exact_Constraint ("YPG"),
-			new Sequence_Exact_Constraint ("YGB")
-		}, 
+			new Sequence_Exact_Constraint ("YGB"),
+            new Sequence_Exact_Constraint ("BYP")
+        }, 
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("PYP"),
 			new None_Constraint ("G"),
 			new Sequence_Exact_Constraint ("YYR"),
 			new Sequence_Exact_Constraint ("RPY"),
-			new Sequence_Exact_Constraint ("BPR")
-		},
+			new Sequence_Exact_Constraint ("BPR"),
+            new Sequence_Exact_Constraint ("BBP")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("BPY"),
 			new Sequence_Exact_Constraint ("PPB"),
 			new Sequence_Exact_Constraint ("PRP"),
 			new None_Constraint ("G"),
-			new Sequence_Exact_Constraint ("RBR")
-		},
+			new Sequence_Exact_Constraint ("RBR"),
+            new Sequence_Exact_Constraint ("YYB")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("GGB"),
 			new Sequence_Exact_Constraint ("YRG"),
 			new None_Constraint ("P"),
 			new Sequence_Exact_Constraint ("BYB"),
-			new Sequence_Exact_Constraint ("RGB")
-		},
+			new Sequence_Exact_Constraint ("RGB"),
+            new Sequence_Exact_Constraint ("BRR")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("GGY"),
 			new Sequence_Exact_Constraint ("RGG"),
 			new Sequence_Exact_Constraint ("YRP"),
 			new Sequence_Exact_Constraint ("PRR"),
-			new None_Constraint ("B")
-		},
+			new None_Constraint ("B"),
+            new Sequence_Exact_Constraint ("GRR")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("PGG"),
 			new Sequence_Exact_Constraint ("YRR"),
 			new None_Constraint ("B"),
 			new Sequence_Exact_Constraint ("YYG"),
-			new Sequence_Exact_Constraint ("YGR")
-		},
+			new Sequence_Exact_Constraint ("YGR"),
+            new Sequence_Exact_Constraint ("GPR")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("BBG"),
 			new Sequence_Exact_Constraint ("BYG"),
 			new Sequence_Exact_Constraint ("PYY"),
 			new None_Constraint ("R"),
-			new Sequence_Exact_Constraint ("YBG")
-		},
+			new Sequence_Exact_Constraint ("YBG"),
+            new Sequence_Exact_Constraint ("GPB")
+        },
 		new List<Constraint>{
 			new Sequence_Exact_Constraint ("PGB"),
 			new None_Constraint ("Y"),
 			new Sequence_Exact_Constraint ("PPG"),
 			new Sequence_Exact_Constraint ("BRG"),
-			new Sequence_Exact_Constraint ("RGR")
-		} };
+			new Sequence_Exact_Constraint ("RGR"),
+            new Sequence_Exact_Constraint ("RPP")
+        } };
 	private List<Constraint> chosen_constraints;
 
 	private Display display;
