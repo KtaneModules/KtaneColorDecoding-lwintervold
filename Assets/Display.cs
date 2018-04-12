@@ -19,24 +19,13 @@ public class Display {
 
 	public void generateRandomValidBoard(){
 		board = new List<List<Cell>>();
-		List<int> slot_permutations = new List<int> ();
-		int possible_slots;
-		if (constraints.Count == 5)
-			possible_slots = 95040;
-		else if (constraints.Count == 6)
-			possible_slots = 665280;
-		else
-			possible_slots = -1;
-
-		for (int i = 0; i < possible_slots; i++)
-			slot_permutations.Add (i);
-		slot_permutations.Shuffle();
+		List<int> slots = new List<int> ();
 
 		for (int i = 0; i < 6; i++)
 			this.board.Add (new List<Cell>{ new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell() });
 
-		for (int i = 0; i < possible_slots; i++) {
-			List<int> slot_permutation = this.translateIntToSlotSelection (slot_permutations [i], constraints.Count);
+		while (true) {
+			List<int> slot_permutation = slots.GetRange(0, constraints.Count);
 			if (this.applyConstraints (constraints, slot_permutation))
 				break;
 		}
@@ -79,36 +68,7 @@ public class Display {
 		constraints.Add(constraint);
 		return false;
 	}
-
-	private List<int> translateIntToSlotSelection(int number, int numconstraints){
-		List<int> var_base_seq = new List<int> ();
-		int _base = 12 - numconstraints + 1;
-		for (int k = 0; k < numconstraints; k++) {
-			var_base_seq.Add (number % _base);
-			number = number / _base;
-			_base++;
-		}
-		var_base_seq.Reverse ();
-		List<int> permuted = new List<int> ();
-		List<int> slots = new List<int>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-		List<bool> used_indexes = new List<bool>{ false, false, false, false, false, false, false, false, false, false, false, false };
-		for (int i = 0; i < numconstraints; i++) {
-			//find the kth position in the permuted list which has not been set yet.
-			int k = var_base_seq[i];
-			int skips = 0;
-			int index;
-			for (index = 0; index < 12; index++) {
-				if (!used_indexes [index]) {
-					if (index - skips == k)
-						break;
-				} else
-					skips++;
-			}
-			permuted.Add (slots [index]);
-			used_indexes [index] = true;
-		}
-		return permuted;
-	}
+    
 	private bool fillBoard(int row, int col){
 		if (row == Display.numRows)
 			return true;
