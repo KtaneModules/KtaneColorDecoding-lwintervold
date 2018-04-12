@@ -9,7 +9,7 @@ public class Indicator {
 	private static readonly List<string> _multipatterns = new List<string> { "checkered", "vertical", "horizontal" };
 	private List<List<Cell>> board;
 	private List<string> indicator_colors;
-	private List<string> skipinfo;
+	private string skipinfo;
 	private int tablenum;
 	private string pattern;
 
@@ -25,7 +25,7 @@ public class Indicator {
 		return board;
 	}
 
-	public List<string> getSkipInfo(){
+	public string getSkipInfo(){
 		return skipinfo;
 	}
 
@@ -37,7 +37,7 @@ public class Indicator {
 		return pattern;
 	}
 
-	public void generateRandomState(KMBombInfo BombInfo, int stagenum){
+	public void generateRandomState(KMBombInfo BombInfo){
 		board = new List<List<Cell>> ();
 		int numcolors = Random.Range (1, 5);
 		//the solid pattern should be less frequent than 1/4 chance. 1/4 -> 1/16
@@ -117,34 +117,99 @@ public class Indicator {
 		if (pattern == "checkered") {
 			if (BombInfo.GetBatteryCount() <= 2) {
 				venncolors = new List<string> { "R", "G", "B", "Y" };
-				skipinfo = new List<string> { "AC", "B", "BE" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "AC";
+                        break;
+                    case 3:
+                        skipinfo = "B";
+                        break;
+                    case 4:
+                        skipinfo = "BF";
+                        break;
+                }
 			} else {
 				venncolors = new List<string> { "P", "B", "Y", "R" };
-				skipinfo = new List<string> { "BD", "D", "CE" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "BD";
+                        break;
+                    case 3:
+                        skipinfo = "D";
+                        break;
+                    case 4:
+                        skipinfo = "CE";
+                        break;
+                }
 			}
 		} else if (pattern == "vertical") {
 			if (BombInfo.GetPortCount () <= 2) {
 				venncolors = new List<string> { "G", "R", "P", "Y" };
-				skipinfo = new List<string> { "C", "AD", "AB" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "C";
+                        break;
+                    case 3:
+                        skipinfo = "AF";
+                        break;
+                    case 4:
+                        skipinfo = "AB";
+                        break;
+                }
 			} else {
 				venncolors = new List<string> { "B", "Y", "G", "P" };
-				skipinfo = new List<string> { "AE", "BD", "AD" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "AE";
+                        break;
+                    case 3:
+                        skipinfo = "BD";
+                        break;
+                    case 4:
+                        skipinfo = "AD";
+                        break;
+                }
 			}
 		} else if (pattern == "horizontal") {
-			if (BombInfo.GetOnIndicators ().Count () <= 2) {
+			if (BombInfo.GetOnIndicators ().Count () + BombInfo.GetOffIndicators().Count() <= 2) {
 				venncolors = new List<string> { "Y", "P", "R", "B" };
-				skipinfo = new List<string> { "D", "AC", "BE" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "D";
+                        break;
+                    case 3:
+                        skipinfo = "AC";
+                        break;
+                    case 4:
+                        skipinfo = "BE";
+                        break;
+                }
 			} else {
 				venncolors = new List<string> { "G", "B", "P", "R" };
-				skipinfo = new List<string> { "CE", "A", "CD" };
+                switch (numcolors)
+                {
+                    case 2:
+                        skipinfo = "CF";
+                        break;
+                    case 3:
+                        skipinfo = "A";
+                        break;
+                    case 4:
+                        skipinfo = "CD";
+                        break;
+                }
 			}
 		} else {
-			if (stagenum == 0 || stagenum == 2) {
+            skipinfo = "";
+			if (BombInfo.GetOnIndicators().Count() <= 1) {
 				venncolors = new List<string> { "P", "G", "B", "R" };
-				skipinfo = new List<string> { "AE", "BD", "C" };
 			} else {
 				venncolors = new List<string> { "Y", "R", "G", "P" };
-				skipinfo = new List<string> { "E", "AD", "BC" };
 			}
 		}
 		//VennColorsToTableNum

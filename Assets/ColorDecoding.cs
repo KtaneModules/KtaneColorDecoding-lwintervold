@@ -93,7 +93,7 @@ public class ColorDecoding : MonoBehaviour {
 	private List<int> valid_indexes;
 	private List<int> correctly_pressed_slots_stage;
 
-	private int stagenum = 0;
+	private bool bomb_defused = false;
 	private int stageprogression = 0;
 
 	private static int _moduleIdCounter = 1;
@@ -110,15 +110,15 @@ public class ColorDecoding : MonoBehaviour {
 		}
 		correctly_pressed_slots_stage = new List<int> ();
 		indicator = new Indicator ();
-		indicator.generateRandomState (BombInfo, stagenum);
+		indicator.generateRandomState (BombInfo);
 		generateStage (indicator);
 		updateGrids ();
 		logStageInfo ();
 	}
 
 	private void logStageInfo(){
-		Debug.LogFormat ("[Color Decoding #{0}] Current stage: {1}", _moduleId, stagenum + 1);
-		Debug.LogFormat ("[Color Decoding #{0}] Current stage progression: {1}/{2} valid slots selected", _moduleId, stageprogression, valid_indexes.Count);
+		Debug.LogFormat ("[Color Decoding #{0}]", _moduleId);
+		Debug.LogFormat ("[Color Decoding #{0}] Current progression: {1}/{2} valid slots selected", _moduleId, stageprogression, valid_indexes.Count);
 		List<Constraint> expectedconstraints = new List<Constraint> ();
 		string expectedsolutions = "";
 		string comma_space = "";
@@ -153,7 +153,8 @@ public class ColorDecoding : MonoBehaviour {
 			{ "B", 1 },
 			{ "C", 2 },
 			{ "D", 3 },
-			{ "E", 4 }
+			{ "E", 4 },
+            { "F", 5 }
 		};
 		chosen_constraints = new List<Constraint> ();
 		chosen_constraints.AddRange (constraint_tables [indicator.getTableNum()]);
@@ -179,8 +180,8 @@ public class ColorDecoding : MonoBehaviour {
 		valid_confounders.Shuffle ();
 		//replace skipped indexes from the constraint table with valid constraints from other tables, add one additional constraint if it exists
 		List<int> indexes_to_replace = new List<int>();
-		for (int i = 0; i < indicator.getSkipInfo() [stagenum].Count(); i++) {
-			indexes_to_replace.Add(constraint_removal_map[indicator.getSkipInfo() [stagenum] [i].ToString ()]);
+		for (int i = 0; i < indicator.getSkipInfo().Count(); i++) {
+			indexes_to_replace.Add(constraint_removal_map[indicator.getSkipInfo() [i].ToString ()]);
 		}
 		valid_indexes = new List<int> ();
 		for (int i = 0; i < 5; i++){
@@ -228,7 +229,7 @@ public class ColorDecoding : MonoBehaviour {
 	}
 
 	void HandleSubmission(int slotnum){
-		if (stagenum == 3)
+		if (bomb_defused)
 			return;
 		for (int i = 0; i < correctly_pressed_slots_stage.Count; i++) {
 			if (correctly_pressed_slots_stage [i] == slotnum)
@@ -245,38 +246,22 @@ public class ColorDecoding : MonoBehaviour {
 		Debug.LogFormat ("[Color Decoding #{0}] Expected slot: {1}. Entered slot {2}.", _moduleId, correct_slot , slotnum);
 		if (display.getConstraintHashMap().ContainsKey(slotnum) && display.getConstraintHashMap()[slotnum].Equals(constraint_tables[indicator.getTableNum()][valid_indexes[stageprogression]])) {
 			stageprogression++;
-			Debug.LogFormat ("[Color Decoding #{0}] Entered correct slot. Completed {1}/{2} submissions for stage {3}.", _moduleId, stageprogression, valid_indexes.Count, stagenum + 1);
+			Debug.LogFormat ("[Color Decoding #{0}] Entered correct slot. Completed {1}/{2} submissions.", _moduleId, stageprogression, valid_indexes.Count);
 			depressButton (slotnum);
 		} else {
-			Debug.LogFormat ("[Color Decoding #{0}] Entered incorrect slot. Completed {1}/{2} submissions for stage {3}.", _moduleId, stageprogression, valid_indexes.Count, stagenum + 1);
+			Debug.LogFormat ("[Color Decoding #{0}] Entered incorrect slot. Completed {1}/{2} submissions.", _moduleId, stageprogression, valid_indexes.Count);
 			BombModule.HandleStrike ();
 		}
 		if (stageprogression > valid_indexes.Count - 1) {
 			resetButtons ();
-			if (stagenum == 2) {
-				Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.CorrectChime, InputButtons[slotnum].transform);
-				Debug.LogFormat ("[Color Decoding #{0}] Bomb successfully defused.", _moduleId);
-				stagenum++;
-				updateGrids ();
-				BombModule.HandlePass ();
-			} else {
-				stageprogression = 0;
-				stagenum++;
-				indicator.generateRandomState (BombInfo, stagenum);
-				generateStage (indicator);
-				updateGrids();
-				logStageInfo ();
-			}
+			Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.CorrectChime, InputButtons[slotnum].transform);
+			Debug.LogFormat ("[Color Decoding #{0}] Bomb successfully defused.", _moduleId);
+			BombModule.HandlePass ();
+            bomb_defused = true;
 		}
 	}
 
 	void updateGrids(){
-		if (stagenum != 0) {
-			Color32 brightgreen = new Color32 (0x00, 0xFF, 0x02, 0xFF);
-			StageIndicators [stagenum - 1].GetComponent<MeshRenderer> ().material.color = brightgreen;
-		}
-		if (stagenum == 3)
-			return;
 		List<List<Cell>> indicatorboard = indicator.getBoard ();
 		List<List<Cell>> displayboard = display.getBoard ();
 		for (int row = 0; row < indicatorboard.Count; row++) {

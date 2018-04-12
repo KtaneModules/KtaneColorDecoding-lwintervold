@@ -19,7 +19,7 @@ public class Display {
 
 	public void generateRandomValidBoard(){
 		board = new List<List<Cell>>();
-		List<int> slots = new List<int> ();
+		List<int> slots = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
 		for (int i = 0; i < 6; i++)
 			this.board.Add (new List<Cell>{ new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell() });
