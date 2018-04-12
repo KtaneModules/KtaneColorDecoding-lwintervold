@@ -116,7 +116,6 @@ public class ColorDecoding : MonoBehaviour {
 	}
 
 	private void logStageInfo(){
-		Debug.LogFormat ("[Color Decoding #{0}]", _moduleId);
 		Debug.LogFormat ("[Color Decoding #{0}] Current progression: {1}/{2} valid slots selected", _moduleId, stageprogression, valid_indexes.Count);
 		List<Constraint> expectedconstraints = new List<Constraint> ();
 		string expectedsolutions = "";
@@ -183,7 +182,7 @@ public class ColorDecoding : MonoBehaviour {
 			indexes_to_replace.Add(constraint_removal_map[indicator.getSkipInfo() [i].ToString ()]);
 		}
 		valid_indexes = new List<int> ();
-		for (int i = 0; i < 5; i++){
+		for (int i = 0; i < constraint_tables[0].Count; i++){
 			if (!indexes_to_replace.Contains (i))
 				valid_indexes.Add (i);
 		}
