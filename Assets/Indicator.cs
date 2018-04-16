@@ -5,19 +5,17 @@ using UnityEngine;
 using ColorDecodingHelper;
 
 public class Indicator {
-	private static readonly List<string> _colors = new List<string> { "R", "G", "B", "Y", "P" };
-	private static readonly List<string> _multipatterns = new List<string> { "checkered", "vertical", "horizontal" };
 	private List<List<Cell>> board;
-	private List<string> indicator_colors;
+	private List<_colors> indicator_colors;
 	private List<string> skipinfo;
 	private int tablenum;
-	private string pattern;
+	private _patterns pattern;
 
 
-	public Indicator(){
+public Indicator(){
 	}
 
-	public List<string> getIndicator_Colors(){
+	public List<_colors> getIndicator_Colors(){
 		return indicator_colors;
 	}
 
@@ -33,7 +31,7 @@ public class Indicator {
 		return tablenum;
 	}
 
-	public string getPattern(){
+	public _patterns getPattern(){
 		return pattern;
 	}
 
@@ -43,111 +41,87 @@ public class Indicator {
 		//the solid pattern should be less frequent than 1/4 chance. 1/4 -> 1/16
 		if (numcolors == 1)
 			numcolors = Random.Range (1, 5);
-		
-		List<string> copycolors = new List<string>();
-		foreach (string color in _colors){
-			copycolors.Add (color);
-		}
-		copycolors.Shuffle ();
-		indicator_colors = copycolors.GetRange (0, numcolors);
 
-		if (numcolors == 1) 
-			pattern = "solid";
-		else
-			pattern = _multipatterns [Random.Range (0, 3)];
+        List<_colors> color_list = _colors.GetValues(typeof(_colors)).Cast<_colors>().ToList().GetRange(0, (int)_colors.U);
+		color_list.Shuffle ();
+		indicator_colors = color_list.GetRange (0, numcolors);
 
-		List<Cell> row;
-		if (pattern == "solid") {
-			string color = indicator_colors [0];
-			for (int i = 0; i < 4; i++) {
-				row = new List<Cell> ();
-				for (int j = 0; j < 4; j++) {
-					row.Add (new Cell (color));
-				}
-				board.Add (row);
-			}
-		} else if (pattern == "horizontal") {
-			for (int i = 0; i < 4; i++) {
-				row = new List<Cell> ();
-				string color = indicator_colors[i % indicator_colors.Count];
-				for (int j = 0; j < 4; j++) {
-					row.Add (new Cell (color));
-				}
-				board.Add (row);
-			}
-		} else if (pattern == "vertical"){
-			for (int i = 0; i < 4; i++){
-				row = new List<Cell> ();
-				for (int j = 0; j < 4; j++) {
-					string color = indicator_colors [j % indicator_colors.Count];
-					row.Add (new Cell(color));
-				}
-				board.Add (row);
-			}
-		} else if (pattern == "checkered" && indicator_colors.Count == 2) {
-			for (int i = 0; i < 4; i++) {
-				row = new List<Cell> ();
-				for (int j = 0; j < 4; j++) {
-					string color = indicator_colors [(i + j) % 2];
-					row.Add (new Cell(color));
-				}
-				board.Add (row);
-			}
-		} else if (pattern == "checkered" && indicator_colors.Count == 3) {
-			for (int i = 0; i < 4; i++) {
-				row = new List<Cell> ();
-				for (int j = 0; j < 4; j++) {
-					string color = indicator_colors [((j + i % 2) * 2 % 4) / (2 - j % 2)];
-					row.Add (new Cell (color));
-				}
-				board.Add (row);
-			}
-		} else if (pattern == "checkered" && indicator_colors.Count == 4) {
-			for (int i = 0; i < 4; i++) {
-				row = new List<Cell> ();
-				for (int j = 0; j < 4; j++) {
-					string color = indicator_colors [(((j % 2) - 2 *(i % 2)) + 4) % 4];
-					row.Add (new Cell (color));
-				}
-				board.Add (row);
-			}
-		}
-		List<string> venncolors;
+        if (numcolors == 1)
+            pattern = _patterns.SOLID;
+        else
+			pattern = _patterns.GetValues(typeof(_patterns)).Cast<_patterns>().ToList()[Random.Range (0, 3)];
 
-		if (pattern == "checkered") {
-			if (BombInfo.GetBatteryCount() <= 2) {
-				venncolors = new List<string> { "R", "G", "B", "Y" };
-				skipinfo = new List<string> { "AC", "B", "BE" };
-			} else {
-				venncolors = new List<string> { "P", "B", "Y", "R" };
-				skipinfo = new List<string> { "BD", "D", "CE" };
-			}
-		} else if (pattern == "vertical") {
-			if (BombInfo.GetPortCount () <= 2) {
-				venncolors = new List<string> { "G", "R", "P", "Y" };
-				skipinfo = new List<string> { "C", "AD", "AB" };
-			} else {
-				venncolors = new List<string> { "B", "Y", "G", "P" };
-				skipinfo = new List<string> { "AE", "BD", "AD" };
-			}
-		} else if (pattern == "horizontal") {
-			if (BombInfo.GetOnIndicators ().Count () <= 2) {
-				venncolors = new List<string> { "Y", "P", "R", "B" };
-				skipinfo = new List<string> { "D", "AC", "BE" };
-			} else {
-				venncolors = new List<string> { "G", "B", "P", "R" };
-				skipinfo = new List<string> { "CE", "A", "CD" };
-			}
-		} else {
-			if (stagenum == 0 || stagenum == 2) {
-				venncolors = new List<string> { "P", "G", "B", "R" };
-				skipinfo = new List<string> { "AE", "BD", "C" };
-			} else {
-				venncolors = new List<string> { "Y", "R", "G", "P" };
-				skipinfo = new List<string> { "E", "AD", "BC" };
-			}
+        for (int i = 0; i < 4; i++) {
+            List<Cell> row = new List<Cell>();
+            for (int j = 0; j < 4; j++) {
+                switch (pattern) {
+                    case _patterns.SOLID:
+                        row.Add(new Cell(color_list[0]));
+                        break;
+                    case _patterns.HORIZONTAL:
+                        row.Add(new Cell(color_list[i % indicator_colors.Count]));
+                        break;
+                    case _patterns.VERTICAL:
+                        row.Add(new Cell(color_list[j % indicator_colors.Count]));
+                        break;
+                    case _patterns.CHECKERED:
+                        switch (indicator_colors.Count) {
+                            case 2:
+                                row.Add(new Cell(indicator_colors[(i + j) % 2]));
+                                break;
+                            case 3:
+                                row.Add(new Cell(indicator_colors[((j % 2) + 2 * (i % 2)) % 3]));
+                                break;
+                            case 4:
+                                row.Add(new Cell(indicator_colors[((j % 2) + 2 * (i % 2))]));
+                                break;
+                        }
+                        break;
+                }
+            }
+            board.Add(row);
+        }
+		List<_colors> venncolors;
+
+		switch (pattern) { 
+            case _patterns.CHECKERED:
+			    if (BombInfo.GetBatteryCount() <= 2) {
+				    venncolors = new List<_colors> { _colors.R , _colors.G, _colors.B, _colors.Y };
+				    skipinfo = new List<string> { "AC", "B", "BE" };
+			    } else {
+				    venncolors = new List<_colors> { _colors.P, _colors.B, _colors.Y, _colors.R };
+				    skipinfo = new List<string> { "BD", "D", "CE" };
+			    }
+                break;
+		    case _patterns.VERTICAL:
+			    if (BombInfo.GetPortCount () <= 2) {
+				    venncolors = new List<_colors> { _colors.G, _colors.R, _colors.P, _colors.Y };
+				    skipinfo = new List<string> { "C", "AD", "AB" };
+			    } else {
+				    venncolors = new List<_colors> { _colors.B, _colors.Y, _colors.G, _colors.P };
+				    skipinfo = new List<string> { "AE", "BD", "AD" };
+			    }
+                break;
+            case _patterns.HORIZONTAL:
+			    if (BombInfo.GetOnIndicators ().Count () <= 2) {
+				    venncolors = new List<_colors> { _colors.Y, _colors.P, _colors.R, _colors.B };
+				    skipinfo = new List<string> { "D", "AC", "BE" };
+			    } else {
+				    venncolors = new List<_colors> { _colors.G, _colors.B, _colors.P, _colors.R };
+				    skipinfo = new List<string> { "CE", "A", "CD" };
+			    }
+                break;
+            default:
+			    if (stagenum == 0 || stagenum == 2) {
+				    venncolors = new List<_colors> { _colors.P, _colors.G, _colors.B, _colors.R };
+				    skipinfo = new List<string> { "AE", "BD", "C" };
+			    } else {
+				    venncolors = new List<_colors> { _colors.Y, _colors.R, _colors.G, _colors.P };
+				    skipinfo = new List<string> { "E", "AD", "BC" };
+			    }
+                break;
 		}
-		//VennColorsToTableNum
+		//VennRegionToTableNum
 		tablenum = 0;
 		int region = 0;
 		int v = 1;
@@ -157,55 +131,7 @@ public class Indicator {
 			v = v << 1;
 		}
 		//Tablenums are indexed from 0.
-		switch (region) {
-		case 0:
-			tablenum = 2;
-			break;
-		case 1:
-			tablenum = 7;
-			break;
-		case 2:
-			tablenum = 1;
-			break;
-		case 3:
-			tablenum = 5;
-			break;
-		case 4:
-			tablenum = 4;
-			break;
-		case 5:
-			tablenum = 1;
-			break;
-		case 6:
-			tablenum = 3;
-			break;
-		case 7:
-			tablenum = 4;
-			break;
-		case 8:
-			tablenum = 6;
-			break;
-		case 9:
-			tablenum = 2;
-			break;
-		case 10:
-			tablenum = 5;
-			break;
-		case 11:
-			tablenum = 0;
-			break;
-		case 12:
-			tablenum = 0;
-			break;
-		case 13:
-			tablenum = 3;
-			break;
-		case 14:
-			tablenum = 7;
-			break;
-		case 15:
-			tablenum = 6;
-			break;
-		}
+        List<int> venn_region_mapping = new List<int> { 2, 7, 1, 5, 4, 1, 3, 4, 6, 2, 5, 0, 0, 3, 7, 6 };
+        tablenum = venn_region_mapping[region];
 	}
 }

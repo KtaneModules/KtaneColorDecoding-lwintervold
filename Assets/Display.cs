@@ -8,7 +8,6 @@ using ColorDecodingHelper;
 public class Display {
 	private const int numRows = 6;
 	private const int numCols = 6;
-	private static readonly List<string> colors = new List<string>{"R","G","B","Y","P"};
 	private List<List<Cell>> board;
 	private List<Constraint> constraints;
 	private Dictionary<int,Constraint> constraintHashMap = new Dictionary<int,Constraint>();
@@ -113,16 +112,16 @@ public class Display {
 		if (row == Display.numRows)
 			return true;
 		//Current cell color is SET
-		if (!this.board[row][col].getColor().Equals(" ")){
+		if (!this.board[row][col].getColor().Equals(_colors.U)){
 			if (col == Display.numCols - 1)
 				return fillBoard (row + 1, 0);
 			else
 				return fillBoard (row, col + 1);
 		}
 		//Current cell color is NOT SET
-		List<string> rand_colors = new List<string>(Display.colors);
+		List<_colors> rand_colors = _colors.GetValues(typeof(_colors)).Cast<_colors>().ToList().GetRange(0, (int) _colors.U);
 		rand_colors.Shuffle ();
-		foreach (string color in rand_colors) {
+		foreach (_colors color in rand_colors) {
 			this.board [row] [col].setColor (color);
 			if (this.isValidCellColor (row, col)) {
 				if (col == Display.numCols - 1) {
@@ -132,7 +131,7 @@ public class Display {
 					return true;
 			}
 		}
-		this.board [row] [col].setColor (" ");
+		this.board [row] [col].setColor (_colors.U);
 		return false;
 	}
 

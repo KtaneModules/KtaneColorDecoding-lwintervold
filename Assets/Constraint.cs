@@ -13,7 +13,9 @@ public interface Constraint{
 
 	bool Equals (Constraint constraint);
 
-	string getPattern ();
+	List<_colors> getPattern ();
+
+    string toString();
 }
 
 

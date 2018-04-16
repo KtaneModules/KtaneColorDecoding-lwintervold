@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cell {
-	private string color;
+	private _colors color;
 
 	public Cell(){
-		this.color = " ";
+		this.color = _colors.U;
 	}
 
-	public Cell(string color){
+	public Cell(_colors color){
 		this.color = color;
 	}
 
-	public string getColor(){
+	public _colors getColor(){
 		return this.color;
 	}
 
-	public void setColor(string color){
+	public void setColor(_colors color){
 		this.color = color;
 	}
 }

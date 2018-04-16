@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using ColorDecodingHelper;
@@ -14,69 +13,69 @@ public class ColorDecoding : MonoBehaviour {
 	public GameObject[] DisplayGrid;
 	public GameObject[] StageIndicators;
 
-	private static readonly Dictionary<string, Color32> _colormap= new Dictionary<string, Color32> { 
-		{"R", new Color32(0xFF, 0x00, 0x00, 0xFF)},
-		{"G", new Color32(0x00, 0x57, 0x00, 0xFF)}, 
-		{"B", new Color32(0x0F, 0x00, 0xA1, 0xFF)}, 
-		{"Y", new Color32(0xDA, 0xEA, 0x00, 0xFF)}, 
-		{"P", new Color32(0x7C, 0x11, 0x9A, 0xFF)}};
+	private static readonly Dictionary<_colors, Color32> _colormap= new Dictionary<_colors, Color32> { 
+		{_colors.R, new Color32(0xFF, 0x00, 0x00, 0xFF)},
+		{_colors.G, new Color32(0x00, 0x57, 0x00, 0xFF)}, 
+		{_colors.B, new Color32(0x0F, 0x00, 0xA1, 0xFF)}, 
+		{_colors.Y, new Color32(0xDA, 0xEA, 0x00, 0xFF)},
+        {_colors.P, new Color32(0x7C, 0x11, 0x9A, 0xFF)}};
 
 	private static readonly List<List<Constraint>> constraint_tables = new List<List<Constraint>> { 
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("BGB"),
-			new Sequence_Exact_Constraint ("BBY"),
-			new None_Constraint ("R"),
-			new Sequence_Exact_Constraint ("YPG"),
-			new Sequence_Exact_Constraint ("YGB")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.G, _colors.B}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.B, _colors.Y}),
+			new None_Constraint (new List<_colors>{ _colors.R }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.P, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.G, _colors.B})
 		}, 
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("PYP"),
-			new None_Constraint ("G"),
-			new Sequence_Exact_Constraint ("YYR"),
-			new Sequence_Exact_Constraint ("RPY"),
-			new Sequence_Exact_Constraint ("BPR")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.Y, _colors.P}),
+			new None_Constraint (new List<_colors>{ _colors.G }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.Y, _colors.R}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.R, _colors.P, _colors.Y}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.P, _colors.R})
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("BPY"),
-			new Sequence_Exact_Constraint ("PPB"),
-			new Sequence_Exact_Constraint ("PRP"),
-			new None_Constraint ("G"),
-			new Sequence_Exact_Constraint ("RBR")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.P, _colors.Y}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.P, _colors.B}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.R, _colors.P}),
+			new None_Constraint (new List<_colors>{_colors.G }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.R, _colors.B, _colors.R})
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("GGB"),
-			new Sequence_Exact_Constraint ("YRG"),
-			new None_Constraint ("P"),
-			new Sequence_Exact_Constraint ("BYB"),
-			new Sequence_Exact_Constraint ("RGB")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.G, _colors.G, _colors.B}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.R, _colors.G}),
+			new None_Constraint (new List<_colors>{_colors.P }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.Y, _colors.B}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.R, _colors.G, _colors.B})
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("GGY"),
-			new Sequence_Exact_Constraint ("RGG"),
-			new Sequence_Exact_Constraint ("YRP"),
-			new Sequence_Exact_Constraint ("PRR"),
-			new None_Constraint ("B")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.G, _colors.G, _colors.Y}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.R, _colors.G, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.R, _colors.P}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.R, _colors.R}),
+			new None_Constraint (new List<_colors>{_colors.B })
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("PGG"),
-			new Sequence_Exact_Constraint ("YRR"),
-			new None_Constraint ("B"),
-			new Sequence_Exact_Constraint ("YYG"),
-			new Sequence_Exact_Constraint ("YGR")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.G, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.R, _colors.R}),
+			new None_Constraint (new List<_colors>{_colors.B }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.Y, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.G, _colors.R})
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("BBG"),
-			new Sequence_Exact_Constraint ("BYG"),
-			new Sequence_Exact_Constraint ("PYY"),
-			new None_Constraint ("R"),
-			new Sequence_Exact_Constraint ("YBG")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.B, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.Y, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.Y, _colors.Y}),
+			new None_Constraint (new List<_colors>{_colors.R }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.Y, _colors.B, _colors.G})
 		},
 		new List<Constraint>{
-			new Sequence_Exact_Constraint ("PGB"),
-			new None_Constraint ("Y"),
-			new Sequence_Exact_Constraint ("PPG"),
-			new Sequence_Exact_Constraint ("BRG"),
-			new Sequence_Exact_Constraint ("RGR")
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.G, _colors.B}),
+			new None_Constraint (new List<_colors>{_colors.Y }),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.P, _colors.P, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.B, _colors.R, _colors.G}),
+			new Sequence_Exact_Constraint (new List<_colors>{_colors.R, _colors.G, _colors.R})
 		} };
 	private List<Constraint> chosen_constraints;
 
@@ -163,7 +162,7 @@ public class ColorDecoding : MonoBehaviour {
 				continue;
 			List<Constraint> table = constraint_tables [i];
 			foreach (Constraint c in table) {
-				if (!c.getPattern ().Contains (chosen_None_Constraint.getPattern ()) && c.GetType () != typeof(None_Constraint)) {
+				if (!c.getPattern ().Contains (chosen_None_Constraint.getPattern ()[0]) && c.GetType () != typeof(None_Constraint)) {
 					valid_confounders.Add (c);
 				}
 			}

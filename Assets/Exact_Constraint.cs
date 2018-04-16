@@ -6,10 +6,11 @@ using ColorDecodingHelper;
 
 //This class defines a constraint whose components must appear ONLY ONCE in its slot in any order and placement.
 //TODO: Finish implementation
+/*
 public class Exact_Constraint : Constraint{
-	private readonly string pattern;
+	private readonly List<_colors> pattern;
 
-	public Exact_Constraint(string pattern){
+	public Exact_Constraint(List<_colors> pattern){
 		this.pattern = pattern;
 	}
 
@@ -77,7 +78,8 @@ public class Exact_Constraint : Constraint{
 		return constraint.GetType () == typeof(Exact_Constraint) && constraint.getPattern().Equals(this.pattern);
 	}
 
-	public string getPattern(){
+	public List<_colors> getPattern(){
 		return this.pattern;
 	}
 }
+*/
