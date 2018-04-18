@@ -25,6 +25,7 @@ public class Display {
 			this.board.Add (new List<Cell>{ new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell() });
 
 		while (true) {
+            slots.Shuffle();
 			List<int> slot_permutation = slots.GetRange(0, constraints.Count);
 			if (this.applyConstraints (constraints, slot_permutation))
 				break;
