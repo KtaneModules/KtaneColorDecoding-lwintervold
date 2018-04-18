@@ -90,7 +90,7 @@ public class Sequence_Exact_Constraint : Constraint
         return this.sequence;
     }
 
-    public string toString()
+    public string getPatternAsString()
     {
         return string.Join("", sequence.ToArray().Select(item => item.ToString()).ToArray());
     }

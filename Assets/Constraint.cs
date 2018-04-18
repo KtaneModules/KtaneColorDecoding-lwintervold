@@ -15,7 +15,7 @@ public interface Constraint{
 
 	List<_colors> getPattern ();
 
-    string toString();
+    string getPatternAsString();
 }
 
 

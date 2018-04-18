@@ -100,8 +100,7 @@ public class ColorDecoding : MonoBehaviour {
 			};
 		}
 		correctly_pressed_slots_stage = new List<int> ();
-		indicator = new Indicator ();
-		indicator.generateRandomState (BombInfo, stagenum);
+		indicator = new Indicator (BombInfo, stagenum);
 		generateStage (indicator);
 		updateGrids ();
 		logStageInfo ();
@@ -115,7 +114,7 @@ public class ColorDecoding : MonoBehaviour {
 		string comma_space = "";
 		for (int i = stageprogression; i < valid_indexes.Count; i++) {
 			expectedsolutions += comma_space;
-			expectedsolutions += constraint_tables [indicator.getTableNum ()] [valid_indexes [stageprogression + i]].getPattern ();
+			expectedsolutions += constraint_tables [indicator.getTableNum ()] [valid_indexes [stageprogression + i]].getPatternAsString ();
 			expectedconstraints.Add (constraint_tables [indicator.getTableNum ()] [valid_indexes [stageprogression + i]]);
 			if (i == stageprogression)
 				comma_space = ", ";
@@ -253,7 +252,7 @@ public class ColorDecoding : MonoBehaviour {
 			} else {
 				stageprogression = 0;
 				stagenum++;
-				indicator.generateRandomState (BombInfo, stagenum);
+				indicator = new Indicator(BombInfo, stagenum);
 				generateStage (indicator);
 				updateGrids();
 				logStageInfo ();

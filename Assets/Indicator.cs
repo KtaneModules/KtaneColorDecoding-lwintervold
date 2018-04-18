@@ -12,7 +12,8 @@ public class Indicator {
 	private _patterns pattern;
 
 
-public Indicator(){
+public Indicator(KMBombInfo bombinfo, int stagenum){
+        this.generateRandomState(bombinfo, stagenum);
 	}
 
 	public List<_colors> getIndicator_Colors(){
@@ -35,7 +36,7 @@ public Indicator(){
 		return pattern;
 	}
 
-	public void generateRandomState(KMBombInfo BombInfo, int stagenum){
+	private void generateRandomState(KMBombInfo BombInfo, int stagenum){
 		board = new List<List<Cell>> ();
 		int numcolors = Random.Range (1, 5);
 		//the solid pattern should be less frequent than 1/4 chance. 1/4 -> 1/16

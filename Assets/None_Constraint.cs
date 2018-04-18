@@ -91,7 +91,7 @@ public class None_Constraint : Constraint{
         return this.antipattern;
 	}
 
-    public string toString(){
+    public string getPatternAsString(){
         return this.antipattern[0].ToString();
     }
 }
