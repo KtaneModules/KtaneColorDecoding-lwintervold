@@ -11,6 +11,8 @@ public interface Constraint{
 
 	bool isValidInSlot(List<Cell> slot);
 
+    bool isOverValidInSlot(List<Cell> slot);
+
 	bool Equals (Constraint constraint);
 
 	List<_colors> getPattern ();

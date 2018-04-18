@@ -64,7 +64,15 @@ public class Sequence_Exact_Constraint : Constraint
         return possible_placements;
     }
 
-    public bool isValidInSlot(List<Cell> slot)
+    public bool isValidInSlot(List<Cell> slot) {
+        return validStatesInSlot(slot) == 1;
+    }
+
+    public bool isOverValidInSlot(List<Cell> slot) {
+        return validStatesInSlot(slot) > 1;
+    }
+
+    private int validStatesInSlot(List<Cell> slot)
     {
         int found_matches = 0;
         for (int i = 0; i < 6 - this.sequence.Count + 1; i++)
@@ -77,7 +85,7 @@ public class Sequence_Exact_Constraint : Constraint
             if (match.SequenceEqual(this.sequence) || match.SequenceEqual(this.sequence_reversed))
                 found_matches++;
         }
-        return found_matches == 1;
+        return found_matches;
     }
 
     public bool Equals(Constraint constraint)

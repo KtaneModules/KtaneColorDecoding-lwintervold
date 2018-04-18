@@ -116,13 +116,13 @@ public class Display {
 					if (!this.constraintHashMap [key].isValidInSlot (cross_slot))
 						return false;
 				} else {
-					if (this.constraintHashMap [key].isValidInSlot (cross_slot))
+					if (this.constraintHashMap [key].isValidInSlot (cross_slot) || this.constraintHashMap[key].isOverValidInSlot(cross_slot))
 						return false;
 				}
 			}
 			//check unassigned constraint validity in cross slots
 			foreach (Constraint constraint in remaining_constraints){
-				if (constraint.isValidInSlot(cross_slot))
+				if (constraint.isValidInSlot(cross_slot) || constraint.isOverValidInSlot(cross_slot))
 					return false;
 			}
 		}
@@ -131,26 +131,26 @@ public class Display {
 		foreach (int key in this.constraintHashMap.Keys){
 			if (key.Equals (slotnum) && !this.constraintHashMap [key].isValidInSlot (current_slot))
 				return false;
-			else if (!key.Equals (slotnum) && this.constraintHashMap [key].isValidInSlot (current_slot))
+			else if (!key.Equals (slotnum) && (this.constraintHashMap [key].isValidInSlot (current_slot) || this.constraintHashMap[key].isOverValidInSlot(current_slot)))
 				return false;
 		}
 		//check unassigned constraint validity slot
 		foreach (Constraint constraint in remaining_constraints) {
-			if (constraint.isValidInSlot(current_slot))
+			if (constraint.isValidInSlot(current_slot) || constraint.isOverValidInSlot(current_slot))
 				return false;
 		}
 		return true;
 	}
 
 	private bool isValidCellColor(int row, int col){
-		foreach (int key in constraintHashMap.Keys) {
-			if (key == row && !constraintHashMap[key].isValidInSlot(getSlot(row)))
+		foreach (int key in this.constraintHashMap.Keys) {
+			if (key == row && !this.constraintHashMap[key].isValidInSlot(getSlot(row)))
 				return false;
-			else if (key != row && constraintHashMap [key].isValidInSlot (getSlot (row)))
+			else if (key != row && (this.constraintHashMap [key].isValidInSlot (getSlot (row))) || this.constraintHashMap[key].isOverValidInSlot(getSlot(row)))
 				return false;
-			if (key == col + 6 && !constraintHashMap[key].isValidInSlot(getSlot(col + 6)))
+			if (key == col + 6 && !this.constraintHashMap[key].isValidInSlot(getSlot(col + 6)))
 				return false;
-			else if (key != col + 6 && constraintHashMap [key].isValidInSlot (getSlot (col + 6)))
+			else if (key != col + 6 && (this.constraintHashMap [key].isValidInSlot (getSlot (col + 6)) || this.constraintHashMap[key].isOverValidInSlot(getSlot(col + 6))))
 				return false;
 		}
 		return true;

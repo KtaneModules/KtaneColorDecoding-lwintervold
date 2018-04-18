@@ -83,6 +83,10 @@ public class None_Constraint : Constraint{
 		return true;
 	}
 
+    public bool isOverValidInSlot(List<Cell> slot) {
+        return false;
+    }
+
 	public bool Equals(Constraint constraint){
 		return constraint.GetType () == typeof(None_Constraint) && constraint.getPattern().SequenceEqual(this.antipattern);
 	}
