@@ -134,7 +134,7 @@ public class Display {
 			else if (!key.Equals (slotnum) && (this.constraintHashMap [key].isValidInSlot (current_slot) || this.constraintHashMap[key].isOverValidInSlot(current_slot)))
 				return false;
 		}
-		//check unassigned constraint validity slot
+		//check unassigned constraint validity in slot
 		foreach (Constraint constraint in remaining_constraints) {
 			if (constraint.isValidInSlot(current_slot) || constraint.isOverValidInSlot(current_slot))
 				return false;

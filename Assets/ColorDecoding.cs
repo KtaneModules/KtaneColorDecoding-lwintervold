@@ -2,6 +2,8 @@
 using System.Linq;
 using UnityEngine;
 using ColorDecodingHelper;
+using System.Text.RegularExpressions;
+using System;
 
 public class ColorDecoding : MonoBehaviour {
 
@@ -226,11 +228,7 @@ public class ColorDecoding : MonoBehaviour {
 		}
 		Audio.PlayGameSoundAtTransform (KMSoundOverride.SoundEffect.ButtonPress, InputButtons[slotnum].transform);
 		InputButtons[slotnum].AddInteractionPunch (0.2f);
-		int correct_slot = -1;
-		foreach (int key in display.getConstraintHashMap().Keys){
-			if (display.getConstraintHashMap () [key].Equals (constraint_tables[indicator.getTableNum()][valid_indexes [stageprogression]]))
-				correct_slot = key;
-		}
+        int correct_slot = valid_indexes[stageprogression];
 		display.debugLogBoard ();
 		Debug.LogFormat ("[Color Decoding #{0}] Expected slot: {1}. Entered slot {2}.", _moduleId, correct_slot , slotnum);
 		if (display.getConstraintHashMap().ContainsKey(slotnum) && display.getConstraintHashMap()[slotnum].Equals(constraint_tables[indicator.getTableNum()][valid_indexes[stageprogression]])) {
@@ -280,4 +278,31 @@ public class ColorDecoding : MonoBehaviour {
 			}
 		}
 	}
+#pragma warning disable 414
+    private string TwitchHelpMessage = "Commands are “col1/.../col6/row1/.../row6” or “c1/.../c6/r1/.../r6”. These can be chained, for example: “!{0} row1 r2 col3 c4”";
+#pragma warning restore 414
+
+    private IEnumerable<KMSelectable> ProcessTwitchCommand(string command) {
+        var pieces = command.ToLowerInvariant().Split(new[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        var buttons = new List<KMSelectable>();
+
+        for (int i = 0; i < pieces.Length; i++) {
+            switch (pieces[i]) {
+                case "col1": case "c1": buttons.Add(InputButtons[6]); break;
+                case "col2": case "c2": buttons.Add(InputButtons[7]); break;
+                case "col3": case "c3": buttons.Add(InputButtons[8]); break;
+                case "col4": case "c4": buttons.Add(InputButtons[9]); break;
+                case "col5": case "c5": buttons.Add(InputButtons[10]); break;
+                case "col6": case "c6": buttons.Add(InputButtons[11]); break;
+                case "row1": case "r1": buttons.Add(InputButtons[0]); break;
+                case "row2": case "r2": buttons.Add(InputButtons[1]); break;
+                case "row3": case "r3": buttons.Add(InputButtons[2]); break;
+                case "row4": case "r4": buttons.Add(InputButtons[3]); break;
+                case "row5": case "r5": buttons.Add(InputButtons[4]); break;
+                case "row6": case "r6": buttons.Add(InputButtons[5]); break;
+                default: return null;
+            }
+        }
+        return buttons;
+    }
 }
