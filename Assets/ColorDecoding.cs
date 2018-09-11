@@ -199,7 +199,6 @@ public class ColorDecoding : MonoBehaviour {
 				constraints_in_build_order.Add (c);
 		}
 		display = new Display (constraints_in_build_order);
-		display.generateRandomValidBoard ();
 	}
 
 	void depressButton(int slotnum){

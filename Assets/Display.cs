@@ -14,6 +14,7 @@ public class Display {
 
 	public Display (List<Constraint> constraints){
 		this.constraints = constraints;
+        generateRandomValidBoard();
 	}
 
 	public void generateRandomValidBoard(){
