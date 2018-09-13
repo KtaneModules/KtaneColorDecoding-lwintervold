@@ -21,10 +21,10 @@ public class Sequence_Exact_Constraint : Constraint
 
     public List<List<Cell>> enumeratePlacementsInSlot(List<Cell> slot)
     {
-        List<List<Cell>> possible_placements = this.getPossiblePlacements(slot, this.sequence);
+        List<List<Cell>> possible_placements = getPossiblePlacements(slot, this.sequence);
         if (!this.sequence.SequenceEqual(this.sequence_reversed))
         {
-            possible_placements.AddRange(this.getPossiblePlacements(slot, this.sequence_reversed));
+            possible_placements.AddRange(getPossiblePlacements(slot, this.sequence_reversed));
         }
         List<List<Cell>> possible_valid_placements = new List<List<Cell>>();
         foreach (List<Cell> possible_placement in possible_placements)
@@ -35,7 +35,7 @@ public class Sequence_Exact_Constraint : Constraint
         return possible_valid_placements;
     }
 
-    private List<List<Cell>> getPossiblePlacements(List<Cell> slot, List<_colors> seq)
+    private static List<List<Cell>> getPossiblePlacements(List<Cell> slot, List<_colors> seq)
     {
         List<List<Cell>> possible_placements = new List<List<Cell>>();
         for (int i = 0; i < 6 - seq.Count + 1; i++)

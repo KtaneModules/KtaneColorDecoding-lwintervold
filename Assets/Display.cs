@@ -10,7 +10,7 @@ public class Display {
 	private const int numCols = 6;
 	private List<List<Cell>> board;
 	private List<Constraint> constraints;
-	private Dictionary<int,Constraint> constraintHashMap = new Dictionary<int,Constraint>();
+	private Dictionary<int,Constraint> constraintSlotMap = new Dictionary<int,Constraint>();
 
 	public Display (List<Constraint> constraints){
 		this.constraints = constraints;
@@ -40,7 +40,7 @@ public class Display {
 		List<Cell> slot = this.getSlot (slotnum);
 		Constraint constraint = constraints [constraints.Count - 1];
 		constraints.RemoveAt (constraints.Count - 1);
-		this.constraintHashMap[slotnum] = constraint;
+		this.constraintSlotMap[slotnum] = constraint;
 		List<Cell> original_slot_state = new List<Cell> ();
 		foreach (Cell cell in this.getSlot(slotnum))
 			original_slot_state.Add (new Cell (cell.getColor ()));
@@ -48,7 +48,7 @@ public class Display {
 		if (constraint.GetType() == typeof(None_Constraint)){
 			if (((None_Constraint) constraint).willAlwaysFail (slotnum, this)) {
 				constraints.Add (constraint);
-				this.constraintHashMap.Remove (slotnum);
+				this.constraintSlotMap.Remove (slotnum);
 				return false;
 			}
 		}
@@ -64,7 +64,7 @@ public class Display {
 				slot_permutation.Add (testedslot);
 			}
 		}
-		this.constraintHashMap.Remove(slotnum);
+		this.constraintSlotMap.Remove(slotnum);
 		this.setSlot(slotnum,original_slot_state);
 		constraints.Add(constraint);
 		return false;
@@ -112,12 +112,12 @@ public class Display {
 		for (int i = start; i < end; i++) {
 			//check assigned constraint validity in cross slots
 			List<Cell> cross_slot = this.getSlot (i);
-			foreach (int key in this.constraintHashMap.Keys) {
+			foreach (int key in this.constraintSlotMap.Keys) {
 				if (i == key) {
-					if (!this.constraintHashMap [key].isValidInSlot (cross_slot))
+					if (!this.constraintSlotMap [key].isValidInSlot (cross_slot))
 						return false;
 				} else {
-					if (this.constraintHashMap [key].isValidInSlot (cross_slot) || this.constraintHashMap[key].isOverValidInSlot(cross_slot))
+					if (this.constraintSlotMap [key].isValidInSlot (cross_slot) || this.constraintSlotMap[key].isOverValidInSlot(cross_slot))
 						return false;
 				}
 			}
@@ -129,10 +129,10 @@ public class Display {
 		}
 		//check assigned constraint validity in slot
 		List<Cell> current_slot = this.getSlot(slotnum);
-		foreach (int key in this.constraintHashMap.Keys){
-			if (key.Equals (slotnum) && !this.constraintHashMap [key].isValidInSlot (current_slot))
+		foreach (int key in this.constraintSlotMap.Keys){
+			if (key.Equals (slotnum) && !this.constraintSlotMap [key].isValidInSlot (current_slot))
 				return false;
-			else if (!key.Equals (slotnum) && (this.constraintHashMap [key].isValidInSlot (current_slot) || this.constraintHashMap[key].isOverValidInSlot(current_slot)))
+			else if (!key.Equals (slotnum) && (this.constraintSlotMap [key].isValidInSlot (current_slot) || this.constraintSlotMap[key].isOverValidInSlot(current_slot)))
 				return false;
 		}
 		//check unassigned constraint validity in slot
@@ -144,14 +144,14 @@ public class Display {
 	}
 
 	private bool isValidCellColor(int row, int col){
-		foreach (int key in this.constraintHashMap.Keys) {
-			if (key == row && !this.constraintHashMap[key].isValidInSlot(getSlot(row)))
+		foreach (int key in this.constraintSlotMap.Keys) {
+			if (key == row && !this.constraintSlotMap[key].isValidInSlot(getSlot(row)))
 				return false;
-			else if (key != row && (this.constraintHashMap [key].isValidInSlot (getSlot (row))) || this.constraintHashMap[key].isOverValidInSlot(getSlot(row)))
+			else if (key != row && (this.constraintSlotMap [key].isValidInSlot (getSlot (row))) || this.constraintSlotMap[key].isOverValidInSlot(getSlot(row)))
 				return false;
-			if (key == col + 6 && !this.constraintHashMap[key].isValidInSlot(getSlot(col + 6)))
+			if (key == col + 6 && !this.constraintSlotMap[key].isValidInSlot(getSlot(col + 6)))
 				return false;
-			else if (key != col + 6 && (this.constraintHashMap [key].isValidInSlot (getSlot (col + 6)) || this.constraintHashMap[key].isOverValidInSlot(getSlot(col + 6))))
+			else if (key != col + 6 && (this.constraintSlotMap [key].isValidInSlot (getSlot (col + 6)) || this.constraintSlotMap[key].isOverValidInSlot(getSlot(col + 6))))
 				return false;
 		}
 		return true;
@@ -184,7 +184,7 @@ public class Display {
 	}
 
 	public Dictionary<int,Constraint> getConstraintHashMap(){
-		return this.constraintHashMap;
+		return this.constraintSlotMap;
 	}
 
 	public void debugLogBoard(){

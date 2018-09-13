@@ -24,10 +24,10 @@ public class None_Constraint : Constraint{
 				return new List<List<Cell>> ();
 		}
 		unused_indexes.Shuffle ();
-		return this.doEnumeration (unused_indexes, possible_colors, slot);
+		return doEnumeration (unused_indexes, possible_colors, slot);
 	}
 
-	private List<List<Cell>> doEnumeration(List<int> unused_indexes, List<_colors> possible_colors, List<Cell> possible_placement){
+	private static List<List<Cell>> doEnumeration(List<int> unused_indexes, List<_colors> possible_colors, List<Cell> possible_placement){
 		possible_colors.Shuffle ();
 		List<List<Cell>> possible_placements = new List<List<Cell>> ();
 
@@ -43,7 +43,7 @@ public class None_Constraint : Constraint{
 		foreach (_colors color in possible_colors) {
 			possible_placement[unused_index].setColor(color);
 			List<int> unused_indexes_to_pass = unused_indexes.GetRange(0,unused_indexes.Count - 1);
-			possible_placements.AddRange(this.doEnumeration(unused_indexes_to_pass, possible_colors, possible_placement));
+			possible_placements.AddRange(doEnumeration(unused_indexes_to_pass, possible_colors, possible_placement));
 		}
 		possible_placement [unused_index].setColor (_colors.U);
 		return possible_placements;
